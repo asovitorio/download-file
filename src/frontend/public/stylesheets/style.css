@@ -382,3 +382,50 @@ background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,25
 .action  button{
   margin-left: 5px;
 }
+/* 
+ * ##### Estilização do tela ViewClient
+ */
+ .main-client{
+  
+  padding: 20px;
+ }
+
+ .date-person-client{
+  position: relative;
+  display: flex;
+  margin-top: 20px;
+  padding: 20px;
+  flex-direction: column;
+ }
+ .label-client{
+   position: absolute;
+   top: -15px;
+   margin-left: 20px;
+   font-size: 1.5rem;
+  
+  }
+  .label-date{
+    position: relative;
+    margin-top: 20px;
+  }
+ .label-company{
+   width: auto;
+   max-width: 150px;
+   position: absolute;
+   top:-14px;
+   left: 0;
+   margin-left:20px ;
+   
+ }
+ .date-person-client p{
+   text-align: initial;
+   font-size: 1.5rem;
+  margin: 0;
+  padding-top: 10PX;
+  padding-left:20px ;
+ }
+ 
+ .group-date{
+   display: flex;
+   justify-content: space-between;
+ }

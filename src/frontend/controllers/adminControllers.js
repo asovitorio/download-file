@@ -6,25 +6,19 @@ const jwt = require('jsonwebtoken')
 const passJwt = process.env.PASS_JWT
 const fetch = require('node-fetch');
 require('dotenv').config()
-
 const adminController = {
-    
     timeLine: async (req, res) => {
-        
         const user = await jwt.verify(req.session.token,passJwt)
         const {page=1} = req.query
-
      const response = await fetch(`${process.env.URL_BASE}/path-files/report/${ user.client_id}?page=${page}`, {
         method: 'get',
         headers: { 'Content-Type': 'application/json' },
     })
     const data = await response.json()
-   
         const {
             pathFiles,
             totalPages
         } = data
-       
         return res.render('timeline', {
             title: "System",
             pathFiles,
@@ -36,7 +30,6 @@ const adminController = {
         })
     },
     donwload: async (req, res) => {
-
         const update = {
             id: req.params.id,
             date: "",
@@ -57,7 +50,6 @@ const adminController = {
         fs.readFile(caminho, function (err, data) {
             res.contentType("application/pdf");
             res.send(data);
-          
         });
     },
     home:async (req, res) =>{
@@ -68,13 +60,10 @@ const adminController = {
             headers: { 'Content-Type': 'application/json' },
         })
         const data = await response.json()
-       
-        
         const {
             clients,
             totalPages
         } = data
-
         req.session.erro = undefined
         return res.render('home', {
             title: "System",
@@ -89,7 +78,6 @@ const adminController = {
             user,
             format
         })
-
     },
     addClient:async(req,res) =>{
         const user = await jwt.verify(req.session.token,passJwt)
@@ -110,10 +98,8 @@ const adminController = {
             erro: req.session.erro != undefined ? true:false,
             format
         })
-
     },
     saveClient: async (req,res) =>{
-      
         try {
             const response = await fetch(`${process.env.URL_BASE}/client`, {
                 method: 'post',
