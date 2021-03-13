@@ -1,0 +1,13 @@
+<nav class="navbar navbar-light nav-menu ">
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle logout" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class='fas fa-user-alt' style='font-size:15px'></i>  <%=user.name%>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#"><b> Tipo:</b>  <%= user.status==1? "ADM":"CLIENTE" %> </a></li>
+          <li><a class="dropdown-item" href="#"><b>Usuário:</b>  <%= user.user_name%></a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/logout"><i class='fas fa-door-open'></i> Sair</a></li>
+        </ul>
+      </div>
+  </nav>

@@ -1,0 +1,64 @@
+<table class="table table-striped table-hover">
+    <br>
+
+    <div class="client-add-search">
+        <div class="client-add">
+            <a href="/clients" class="btn btn-info btn-lg" id="btn-add-client">
+                <span class="glyphicon glyphicon-plus" style="color: #fff;"></span>
+            </a>
+        </div>
+        <div class="client-search ">
+
+            <input type="text" name="search" id="input-search-client">
+            <a class="btn btn-info btn-lg" id="btn-search-client">
+                <span class="glyphicon glyphicon-search" style="color: #fff;"></span>
+            </a>
+
+        </div>
+    </div>
+
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Cnpj</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Ação</th>
+        </tr>
+    </thead>
+    <tbody id="row-clients">
+        <% clients.forEach(client =>{%>
+        <tr class="tr-client">
+            <th><%=client.id%> </th>
+            <th><%=client.company%> </th>
+            <td><%=client.cnpj%></td>
+            <td><%=client.email%></td>
+            <td><%=client.telephone%></td>
+            <td class="action">
+                <form method="POST" action="/client-view" class="form-view-client">
+                    <input type="hidden" class="id-delete-client" name="id" value="<%=client.id%>">
+                    <button type="submit" class="btn btn-secondary btn-lg btn-view-client" data-toggle="modal"
+                        data-target="#delete-client">
+                        <span class="glyphicon glyphicon-eye-open" style="color: #fff;"></span>
+                    </button>
+                </form>
+                <form action="/clients/<%=client.id%>?_method=PUT" method="POST">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <span class="glyphicon glyphicon-pencil" style="color: #fff;"></span>
+                    </button>
+                </form>
+                <form method="POST" action="/clients?_method=DELETE" class="form-delete-client">
+                    <input type="hidden" class="id-delete-client" name="id" value="<%=client.id%>">
+                    <button type="submit" class="btn btn-danger btn-lg btn-delete-client" data-toggle="modal"
+                        data-target="#delete-client">
+                        <span class="glyphicon glyphicon-trash" style="color: #fff;"></span>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        <%})%>
+    </tbody>
+</table>
+<!-- Modal -->
+<!-- Modal -->

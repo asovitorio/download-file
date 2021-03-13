@@ -1,0 +1,27 @@
+<%- include("./partials/head.ejs") %>
+
+<main class="container-login">
+    <div class="card box-login">
+        <h1><i class='fas fa-chart-bar'></i> </h1>
+        <form action="/" method="POST" class="form-login">
+            <% if(erro){%> 
+            <span class="alert alert-danger" role="alert">
+              <h5>Usuário ou senha invalido!</h5>
+              </span>
+              <% }%> 
+            <div class="mb-3 ">
+                <label for="exampleFormControlInput1" class="form-label"><i class='fas fa-user-circle'
+                        style='font-size:24px'></i></label>
+                <input type="text" name="user_name" class="form-control" id="user" placeholder="Usuário">
+            </div>
+            <div class="mb-3 ">
+                <label for="exampleFormControlInput1" class="form-label"><i class='fas fa-lock'
+                        style='font-size:24px'></i></label>
+                <input type="password" name="password" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Senha">
+            </div>
+            <input type="submit" class="form-control" id="btn-login" value="Entrar">
+        </form>
+    </div>
+</main>
+<%- include("./partials/footer.ejs") %>

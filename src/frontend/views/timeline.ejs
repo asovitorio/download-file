@@ -1,0 +1,40 @@
+<%- include("./partials/head.ejs") %> 
+<%- include("./partials/nav.ejs") %> 
+
+    <main class="container">
+        <div class="page-header">
+            <h1 id="timeline">Empresa: <%=user.company%></h1>
+        </div>
+        <ul class="timeline">
+            <% pathFiles.forEach((item,i) => { %>
+            <li <%= i%2===0?'':'class=timeline-inverted'%>>
+                <% if(item.download){%>
+                <div class="timeline-badge success">
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                </div>
+                <% }else{%>
+                    <div class="timeline-badge">
+                        <i class="glyphicon glyphicon-save"></i>
+                      </div>
+                <% } %>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h3 class="timeline-title"> <%= item.report.name%> </h3>
+                        <h5><i class="glyphicon glyphicon-calendar"></i> <%=format(new Date(item.date),'dd/MM/yyyy')%> </h5>
+                    </div>
+                    <div class="timeline-body">
+                        <a href="/time-line/<%=item.id%>/<%=item.path%>" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-save"></span> Baixar
+                        </a>
+                        <% if(item.download){%>
+                        <p><b>Último download: </b> <%=format(new Date(item.updatedAt),'dd/MM/yyyy')%>  </p>
+                        <% } %>  
+                    </div>
+                </div>
+            </li>
+            <% }); %>
+        </ul>
+    </main>
+   
+    <%- include("./partials/pagination.ejs") %> 
+    <%- include("./partials/footer.ejs") %> 
