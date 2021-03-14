@@ -1,3 +1,10 @@
+:root{
+  --cor-1:#797979;
+  --cor-2:#4e4e4e;
+  --cor-3: rgb(253, 182, 29);
+  --cor-4: rgb(255, 115, 0) ;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -14,7 +21,7 @@ Styles of navBAr
 ##################################
 */
 .nav-menu{
-  background-color: #5bc0de;
+  background-color: var(--cor-1);
   width: 100%;
   position: absolute;
   top: 0;
@@ -37,8 +44,8 @@ Styles of pages time-line
   height: 92vh;
   overflow-y: auto;
   background-color: #fff;
-  border-right: 12px solid #5bc0de;
-  border-left: 12px solid #5bc0de;
+  border-right: 12px solid var(--cor-1);
+  border-left: 12px solid var(--cor-1);
   
   
 }
@@ -159,7 +166,21 @@ Styles of pages time-line
               left: -14px;
               right: auto;
           }
+.table thead{
+  border-bottom: 4px solid var(--cor-1);
+}
 
+.grey{
+  background-color: var(--cor-1);
+  
+}
+.border-grey{
+  border: 4px solid var(--cor-1);
+  border-radius: 5px;
+}
+.btn-danger{
+  background-color: rgba(255, 71, 25, 0.952);
+}
 .timeline-badge.primary {
   background-color: #2e6da4 !important;
 }
@@ -177,7 +198,7 @@ Styles of pages time-line
 }
 
 .timeline-badge.info {
-  background-color: #5bc0de !important;
+  background-color: var(--cor-1) !important;
 }
 
 .timeline-title {
@@ -198,7 +219,7 @@ Styles of page Login
 }
 .container-login{
   background: rgb(78,58,180);
-  background: linear-gradient(184deg, rgba(78,58,180,1) 0%, rgba(29,178,253,1) 50%, rgba(69,252,217,1) 100%);
+  background: linear-gradient(180deg,rgb(255, 115, 0) 0%, rgb(253, 182, 29) 25%, rgb(129, 129, 129) 65%,rgb(51, 51, 51)95%);
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -237,7 +258,7 @@ background-color: rgb(255, 255, 255);
 }
 .box-login h1 i{
 font-size: 50px;
-background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,253,1) 50%, rgba(69,252,217,1) 100%);
+background: -webkit-linear-gradient(270deg,rgb(255, 115, 0) 0%, rgb(253, 182, 29) 25%, rgb(129, 129, 129) 65%,rgb(51, 51, 51)95%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
@@ -254,7 +275,7 @@ background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,25
 }
 
 .form-login{
-  background: -webkit-linear-gradient(90deg, rgba(78,58,180,1) 0%, rgba(29,178,253,1) 50%, rgba(69,252,217,1) 100%);
+  background: -webkit-linear-gradient(90deg,rgb(255, 115, 0) 0%, rgb(253, 182, 29) 25%, rgb(129, 129, 129) 65%,rgb(51, 51, 51)95%);
   width: 90%;
   height: 90%;
   border-radius: 3px;
@@ -276,7 +297,7 @@ background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,25
 .form-label{
   margin-bottom: 0;
   margin-right: 5px;
-  background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,253,1) 50%, rgba(69,252,217,1) 100%);
+  background: -webkit-linear-gradient(270deg, rgb(255, 115, 0) 0%, rgb(253, 182, 29) 25%, rgb(129, 129, 129) 65%,rgb(51, 51, 51)95%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
@@ -287,7 +308,7 @@ background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,25
   font-size:1.5rem;
 }
 #btn-login{
-  background: rgba(78, 58, 180, 0.685);
+  background: rgb(73, 73, 73);
  color:#b9b9b9;
  font-size: 1.5rem;
  width: 80%;
@@ -296,13 +317,13 @@ background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,25
 }
 #btn-login:hover{
 
-  background: rgb(78, 58, 180);
+  background: rgb(116, 116, 116);
 }
 .pagination-nav{
  
   display: flex;
   justify-content: center;
- background-color: #5bc0de;
+ background-color: var(--cor-1);
   width: 100%;
  
 }
@@ -338,7 +359,7 @@ background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,25
   color: #a1a1a1;
 }
 .active  i{
-  color: #5bc0de;
+  color: var(--cor-1);
 }
 .form-center-input{
   display: flex;
@@ -417,6 +438,7 @@ background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,25
    margin-left:20px ;
    
  }
+
  .date-person-client p{
    text-align: initial;
    font-size: 1.5rem;
@@ -428,4 +450,22 @@ background: -webkit-linear-gradient(270deg, rgba(78,58,180,1) 0%, rgba(29,178,25
  .group-date{
    display: flex;
    justify-content: space-between;
+ }
+ #table-user{
+  height: 100%; 
+  width: 100%
+ }
+
+ #tdcontent{
+   width: 100%;
+   display: block;
+   height: 100%;
+   overflow-y: auto;
+ }
+ .btn-add-user{
+   display: flex;
+   justify-content: flex-end;
+ }
+ .btn-add-user button{
+   padding: 10px;
  }

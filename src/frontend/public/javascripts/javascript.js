@@ -19,6 +19,13 @@ inputSearchClient.addEventListener('keyup',async (e) =>{
         <td>${row.email}</td>
         <td>${row.telephone}</td>
         <td class="action">
+        <form method="POST" action="/client-view" class="form-view-client">
+        <input type="hidden" class="id-delete-client" name="id" value="${row.id}">
+        <button type="submit" class="btn btn-secondary btn-lg btn-view-client" data-toggle="modal"
+            data-target="#delete-client">
+            <span class="glyphicon glyphicon-eye-open" style="color: #fff;"></span>
+        </button>
+    </form>
         <form action="/clients/${row.id}?_method=PUT" method="POST">
         <button type="submit" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-pencil" style="color: #fff;"></span>

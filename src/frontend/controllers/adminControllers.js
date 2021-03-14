@@ -100,21 +100,29 @@ const adminController = {
         })
     },
     saveClient: async (req,res) =>{
-        try {
-            const response = await fetch(`${process.env.URL_BASE}/client`, {
-                method: 'post',
-                body:JSON.stringify(req.body),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const data = await response.json()
+     
+            try {
+                const response = await fetch(`${process.env.URL_BASE}/client`, {
+                    method: 'post',
+                    body:JSON.stringify(req.body),
+                    headers: { 'Content-Type': 'application/json' },
+                })
+                 const data = await response.json()
+                 if(data.status){
+
+                     req.session.erro = true
+                    return res.redirect('/add-clients')
+               }
+              
+              res.redirect('/home')
+                
+            } catch (error) {
+               
+                
+            }
             
-          res.redirect('/home')
-            
-        } catch (error) {
-            req.session.erro = true
-           
-            res.redirect('/add-clients')
-        }
+      
+       
     },
     updateClient:async(req,res) =>{
         try {
@@ -158,6 +166,7 @@ const adminController = {
           res.redirect('/home')
             
         } catch (error) {
+            
             req.session.erro = true
             res.redirect('/clients')
         }
@@ -178,12 +187,21 @@ const adminController = {
     },
     viewClient: async (req, res) =>{
         const user = await jwt.verify(req.session.token,passJwt)
+        // Busca o cliente pelo ID
         const response = await fetch(`${process.env.URL_BASE}/client/${req.body.id}`, {
             method: 'get',
             // body:JSON.stringify(req.body),
             headers: { 'Content-Type': 'application/json' },
         })
         const data = await response.json()
+        // Busca o user_client pelo ID
+        const resp_user = await fetch(`${process.env.URL_BASE}/user/${data.id}`, {
+            method: 'get',
+            // body:JSON.stringify(req.body),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        const user_client = await resp_user.json()
+       
      
         return res.render('home', {
             title: "System",

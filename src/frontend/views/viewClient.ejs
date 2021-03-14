@@ -1,67 +1,151 @@
 <section class="main-client">
-    <div class="border border-info date-person-client">
-        <span class="badge bg-info label-client">Dados da Empresa</span>
+    <div class="border-grey date-person-client">
+        <span class="badge grey label-client">Dados da Empresa</span>
         <div class="group-date">
-            <div class="border border-info label-date" style="width: 60%;">
-                <span class="badge bg-info label-company "> <i class='fas fa-building' style='font-size:15px'></i>
+            <div class="border border-primary label-date" style="width: 60%;">
+                <span class="badge bg-primary label-company "> <i class='fas fa-building' style='font-size:15px'></i>
                     Empresa</span>
                 <p><b><%= clients.company %></b></p>
             </div>
-            <div class="border border-info label-date" style="width: 35%;">
-                <span class="badge bg-info label-company "> <i class='far fa-newspaper' style='font-size:15px'></i>
+            <div class="border border-primary label-date" style="width: 35%;">
+                <span class="badge  bg-primary label-company "> <i class='far fa-newspaper' style='font-size:15px'></i>
                     CNPJ</span>
                 <p><b><%= clients.cnpj %></b></p>
             </div>
-            
+
         </div>
         <div class="group-date">
-            <div class="border border-info label-date" style="width: 60%;">
-                <span class="badge bg-info label-company "> <i class='far fa-envelope-open' style='font-size:15px'></i>
+            <div class="border border-primary label-date" style="width: 60%;">
+                <span class="badge  bg-primary label-company "> <i class='far fa-envelope-open'
+                        style='font-size:15px'></i>
                     Email</span>
                 <p><b><%= clients.email %></b></p>
             </div>
-            <div class="border border-info label-date" style="width: 35%;">
-                <span class="badge bg-info label-company "> <i class='fas fa-mobile-alt' style='font-size:15px'></i>
+            <div class="border border-primary label-date" style="width: 35%;">
+                <span class="badge  bg-primary label-company "> <i class='fas fa-mobile-alt' style='font-size:15px'></i>
                     Telefone</span>
                 <p><b><%= clients.telephone %></b></p>
             </div>
         </div>
     </div>
-    
-    <div class="border border-info date-person-client">
-        <span class="badge bg-info label-client">Endereço</span>
+
+    <div class="border-grey date-person-client">
+        <span class="badge  grey label-client">Endereço</span>
         <div class="group-date">
-            <div class="border border-info label-date" style="width: 50%;">
-                <span class="badge bg-info label-company "> <i class='fas fa-map-marker-alt' style='font-size:15px'></i>
-                     Logradouro</span>
+            <div class="border border-primary label-date" style="width: 50%;">
+                <span class="badge  bg-primary label-company "> <i class='fas fa-map-marker-alt'
+                        style='font-size:15px'></i>
+                    Logradouro</span>
                 <p><b><%= clients.andress %></b></p>
             </div>
-            <div class="border border-info label-date" style="width: 30%;">
-                <span class="badge bg-info label-company "> <i class='fas fa-map-marked-alt' style='font-size:15px'></i>
+            <div class="border border-primary label-date" style="width: 30%;">
+                <span class="badge bg-primary label-company "> <i class='fas fa-map-marked-alt'
+                        style='font-size:15px'></i>
                     Bairro</span>
                 <p><b><%= clients.district %></b></p>
             </div>
-            <div class="border border-info label-date" style="width: 15%;">
-                <span class="badge bg-info label-company "> <i class='fas fa-map-signs' style='font-size:15px'></i>
+            <div class="border border-primary label-date" style="width: 15%;">
+                <span class="badge bg-primary label-company "> <i class='fas fa-map-signs' style='font-size:15px'></i>
                     CEP</span>
                 <p><b><%= clients.zip_code %></b></p>
             </div>
         </div>
         <div class="group-date">
-            <div class="border border-info label-date" style="width: 70%;">
-                <span class="badge bg-info label-company "> <i class='fas fa-map-marker-alt' style='font-size:15px'></i>
+            <div class="border border-primary label-date" style="width: 70%;">
+                <span class="badge bg-primary label-company "> <i class='fas fa-city' style='font-size:15px'></i>
                     Cidade</span>
                 <p><b><%= clients.city%></b></p>
             </div>
-            <div class="border border-info label-date" style="width: 28%;">
-                <span class="badge bg-info label-company "> <i class='fas fa-map-marker-alt' style='font-size:15px'></i>
+            <div class="border border-primary label-date" style="width: 28%;">
+                <span class="badge bg-primary label-company "> <i class='far fa-map' style='font-size:15px'></i>
                     UF</span>
                 <p><b><%= clients.uf%></b></p>
             </div>
-
         </div>
     </div>
-    <div class="border border-info date-person-client">
-        <span class="badge bg-info label-client">Usuário</span>
+    <div class="border-grey date-person-client">
+        <span class="badge  grey label-client">Relatórios-Arquivos</span>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <span class="badge bg-primary"><i class='fas fa-file-pdf' style='font-size:18px'> Inserir
+                                Relatório</i></span>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
+                        the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <span class="badge bg-primary"><i class='fas fa-tasks' style='font-size:18px'> Linha do
+                                Tempo</i></span>
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <h3><b>Linha do Tempo</b></h3>
+                        Exibe os relatórios em uma time-line em ordem decrescente por data, possibilitando o download
+                        dos arquivos.
+                        <div>
+                            <a class="btn btn-primary" href="/time-line?id=<%=clients.id%>&page=1"><i class='fas fa-tasks' style='font-size:24px'></i> Abrir</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- fim acoreedon -->
+    <div class="border-grey date-person-client">
+        <span class="badge grey label-client">Usuário</span>
+
+        <table class="table table-striped" id="table-user">
+
+            <div class="btn-add-user">
+                <button class="btn btn-primary"><i class='fas fa-user-plus' style='font-size:18px'></i></button>
+            </div>
+            <% if(users.length > 0 ){%>
+
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Usuário</th>
+                    <th scope="col">Acesso</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%users.map(user =>{%>
+                <tr>
+                    <td><b><%=user.name%></b></td>
+                    <td><%=user.user_name%></td>
+                    <td><%if(user.status==1){%>
+                        <span class="badge rounded-pill bg-grey">Administrador</span>
+                        <%}else if(user.status==2){%>
+                        <span class="badge rounded-pill bg-primary">Cliente</span>
+                        <%}%> 
+                    </td>
+                    <td></td>
+                </tr>
+                <%})%>
+            </tbody>
+            <% }else{%>
+            <div class="alert alert-primary" role="alert">
+                Não Existe usuários cadastrado para essa empresa
+            </div>
+            <% } %>
+        </table>
+
     </div>
 </section>
+<script>
+
+</script>

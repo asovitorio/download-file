@@ -25,7 +25,7 @@ const loginController = {
             
             
             if(user.status==1)  return res.redirect(`/home`)
-            if(user.status==2)  return res.redirect(`/time-line?page=1`)
+            if(user.status==2)  return res.redirect(`/time-line?id=${user.id}&page=1`)
 
 
          
