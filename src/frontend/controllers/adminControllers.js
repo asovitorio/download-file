@@ -9,12 +9,18 @@ require('dotenv').config()
 const adminController = {
     timeLine: async (req, res) => {
         const user = await jwt.verify(req.session.token,passJwt)
-        const {page=1} = req.query
-     const response = await fetch(`${process.env.URL_BASE}/path-files/report/${ user.client_id}?page=${page}`, {
+        const {page=1,id} = req.query
+     const response = await fetch(`${process.env.URL_BASE}/path-files/report/${id}?page=${page}`, {
         method: 'get',
         headers: { 'Content-Type': 'application/json' },
     })
     const data = await response.json()
+     const respClient= await fetch(`${process.env.URL_BASE}/client/${id}`, {
+        method: 'get',
+        headers: { 'Content-Type': 'application/json' },
+    })
+    const client = await respClient.json()
+        console.log(client)
         const {
             pathFiles,
             totalPages
@@ -25,6 +31,11 @@ const adminController = {
             totalPages,
             page,
             user,
+            clientActive:"active",
+            reportActive:"",
+            configActive:"",
+            company:client.company,
+            id:client.id,
             linkPage:"/time-line",
             format
         })
@@ -195,12 +206,12 @@ const adminController = {
         })
         const data = await response.json()
         // Busca o user_client pelo ID
-        const resp_user = await fetch(`${process.env.URL_BASE}/user/${data.id}`, {
+        const resp_user = await fetch(`${process.env.URL_BASE}/search/user?client_id=${data.id}&page=1`, {
             method: 'get',
             // body:JSON.stringify(req.body),
             headers: { 'Content-Type': 'application/json' },
         })
-        const user_client = await resp_user.json()
+        const {users} = await resp_user.json()
        
      
         return res.render('home', {
@@ -211,6 +222,7 @@ const adminController = {
             linkPage:"/home",
             teste:'view',
             user,
+            users,
             update:true,
             clients:data,
             totalPages:0,

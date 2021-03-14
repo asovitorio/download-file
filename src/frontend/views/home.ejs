@@ -2,21 +2,8 @@
 <%- include("./partials/nav.ejs") %> 
 
 <main class="container">
+  <%- include("./partials/menu.ejs") %> 
  
-  <div class="card text-center">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link <%=clientActive%> " aria-current="true" href="/home"><i class='fas fa-users'> Clientes</i> </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <%=reportActive%> " href="#"><i class='fas fa-file-alt'> Relatorios</i> </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <%=configActive%> " href="#" tabindex="-1" aria-disabled="true"><i class='fas fa-cogs'> Configuração</i> </a>
-        </li>
-      </ul>
-    </div>
    <% if(teste == 'index'){%> 
     <%- include('./clients.ejs') %> 
     <% }else if(teste == 'create'){%> 
@@ -24,7 +11,7 @@
       <%}else if(teste == 'view'){%>
         <%- include('./viewClient.ejs') %>
         <% } %> 
-  </div>
+ </div>
 </main>
   <%- include("./partials/pagination.ejs") %> 
 <%- include("./partials/footer.ejs") %>
