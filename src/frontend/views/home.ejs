@@ -1,17 +1,17 @@
-<%- include("./partials/head.ejs") %> 
-<%- include("./partials/nav.ejs") %> 
+<%- include("./partials/head.ejs") %>
+<%- include("./partials/nav.ejs") %>
 
 <main class="container">
-  <%- include("./partials/menu.ejs") %> 
- 
-   <% if(teste == 'index'){%> 
-    <%- include('./clients.ejs') %> 
-    <% }else if(teste == 'create'){%> 
-      <%- include('./addClient.ejs') %> 
-      <%}else if(teste == 'view'){%>
-        <%- include('./viewClient.ejs') %>
-        <% } %> 
- </div>
+  <%- include("./partials/menu.ejs") %>
+  <% if(teste == 'index'){%>
+  <%- include('./clients.ejs') %>
+  <% }else if(teste == 'create'){%>
+  <%- include('./addClient.ejs') %>
+  <%}else if(teste == 'view'){%>
+  <%- include('./viewClient.ejs') %>
+  <% } %>
+  </div>
 </main>
-  <%- include("./partials/pagination.ejs") %> 
+
+<%- include("./partials/pagination.ejs") %>
 <%- include("./partials/footer.ejs") %>
