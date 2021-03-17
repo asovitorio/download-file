@@ -213,7 +213,7 @@ const adminController = {
         })
         const {users} = await resp_user.json()
        
-     
+        req.session.create = false
         return res.render('home', {
             title: "System",
             clientActive:"active",
@@ -231,6 +231,53 @@ const adminController = {
             format
         })
 
+    },
+    reportsFile: async (req, res) =>{
+        const user = await jwt.verify(req.session.token,passJwt)
+
+        const response = await fetch(`${process.env.URL_BASE}/reports`, {
+            method: 'get',
+            headers: { 'Content-Type': 'application/json' },
+        })
+        const reports = await response.json()
+            const {client_id} = req.params
+          
+        return res.render('home', {
+            title: "System",
+            clientActive:"active",
+            reportActive:"",
+            configActive:"",
+            linkPage:"/home",
+            teste:'file',
+            user,
+            client_id,
+            reports,
+            msg: req.session.create?true:false,
+            totalPages:0,
+            page:0,
+            format
+        })
+    },
+    reportsFileSave: async (req,res) =>{
+        console.log(req.files)
+        const [{filename}] = req.files
+        
+        const{date,client_id,report_id} = req.body
+        const reportFile = {
+            date,
+            path:filename,
+            download:0,
+            status:1,
+            client_id,
+            report_id
+        }
+        const resp_user = await fetch(`${process.env.URL_BASE}/client-reports`, {
+            method: 'post',
+            body:JSON.stringify(reportFile),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        req.session.create = true
+        return res.redirect(`/reports-file/${client_id}`)
     },
     logout: (req, res) =>{
         req.session.token = null

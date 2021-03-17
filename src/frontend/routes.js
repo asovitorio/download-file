@@ -1,7 +1,21 @@
 var express = require('express');
+var multer  = require('multer');
+const path = require('path')
 var router = express.Router();
 const adminController = require('./controllers/adminControllers');
 const loginController = require('./controllers/loginController');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join('src','api','service','uploads'))
+    },
+    filename: function (req, file, cb) {
+        console.log(file)
+      cb(null,Date.now() + file.originalname)
+    }
+  })
+   
+  var upload = multer({ storage: storage })
 
 router.get('/',loginController.index)
 router.post('/',loginController.auth)
@@ -15,6 +29,9 @@ router.put('/clients/:id',adminController.updateClient)
 router.delete('/clients',adminController.deleteClient)
 router.put('/clients',adminController.updateSaveClient)
 router.post('/client-view',adminController.viewClient)
+router.get('/reports-file/:client_id',adminController.reportsFile)
+router.post('/reports-file',upload.any(),adminController.reportsFileSave)
+
 
 
 module.exports = router

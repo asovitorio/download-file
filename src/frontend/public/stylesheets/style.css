@@ -56,11 +56,12 @@ Styles of pages time-line
   /* margin-top: 70px; */
   margin-top: 10px;
     display: flex;
+  padding-left: 20px;  
 }
 .timeline {
   margin-top: 30px;
   list-style: none;
-  padding: 20px 0 20px;
+  padding: 20px  20px;
   position: relative;
 }
 
@@ -109,6 +110,7 @@ Styles of pages time-line
           position: relative;
           -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
           box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+          text-align: initial;
       }
 
           .timeline > li > .timeline-panel:before {

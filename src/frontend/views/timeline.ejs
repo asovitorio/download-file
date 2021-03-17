@@ -4,15 +4,14 @@
         <% if(user.status==1){%>
             <%- include("./partials/menu.ejs") %> 
             <%}%> 
-    
+          <div>
 
-            
+         
         <div class="page-header" <%if(user.status==2){%>style="margin-top: 70px;"<%}%>>
             <button type="button" class="btn btn-primary">
                 <h1>Empresa</h1>   <span class="badge "><h1><%=company%></h1></span>
                 <span class="visually-hidden"></span>
               </button>
-            
         </div>
         <ul class="timeline">
             <% pathFiles.forEach((item,i) => { %>
@@ -55,4 +54,5 @@
             
         </ul>
       </nav>
+    </div>      
     <%- include("./partials/footer.ejs") %> 
