@@ -1,6 +1,8 @@
 const {Client} = require('../models')
 const {Op} = require('sequelize');
-
+const filesDelete = require('../service/functions/files')
+const {PathFile} = require('../models')
+const {User} = require('../models')
 const clientsController = {
   //## Buscas de clientes com paginação  
   index: async (req, res) => {
@@ -154,17 +156,59 @@ const clientsController = {
  // ########## Exclui um usuário no Banco de dados ######## 
  // ########## delete into one tupla data base User  ######## 
     delete: async (req, res) => {
+      
       try {
-      const {
+        const {
           id
-      } = req.body
-     
-      const del = await Client.destroy({
-          where: {
-              id
-          }
-      })
-      res.status(200).json(del)
+        } = req.body
+        
+        const client = await Client.findAll({ 
+          where: { id },
+          include: {
+            association: 'path_file',
+        },
+         
+        
+        })
+
+        client.map(file =>{
+          console.log(file.path_file.path)
+          filesDelete.deletFiles(file.path_file.path)
+        })
+       
+
+        if(client[0].path_file)  {
+
+          const delPath = await PathFile.destroy({
+            where: {
+              client_id: id
+          },
+          })
+          const user = await User.destroy({
+            where: {
+              client_id: id
+          },
+          })
+           
+          const del = await Client.destroy({
+           
+              where: {
+                  id
+              },
+          })
+        
+        }else{
+
+          const del = await Client.destroy({
+           
+            where: {
+                id
+            },
+        })
+        }
+    
+    
+      res.status(200).json({del,delPath})
       
     } catch (error) {
       res.status(400).json(error)

@@ -4,15 +4,14 @@
         <% if(user.status==1){%>
             <%- include("./partials/menu.ejs") %> 
             <%}%> 
-    
+          <div>
 
-            
+         
         <div class="page-header" <%if(user.status==2){%>style="margin-top: 70px;"<%}%>>
             <button type="button" class="btn btn-primary">
                 <h1>Empresa</h1>   <span class="badge "><h1><%=company%></h1></span>
                 <span class="visually-hidden"></span>
               </button>
-            
         </div>
         <ul class="timeline">
             <% pathFiles.forEach((item,i) => { %>
@@ -29,14 +28,17 @@
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h3 class="timeline-title"> <%= item.report.name%> </h3>
-                        <h5><i class="glyphicon glyphicon-calendar"></i> <%=format(new Date(item.date),'dd/MM/yyyy')%> </h5>
+                        <!-- format(new Date(item.date),'dd/MM/yyyy') -->
+                        <h5><i class="glyphicon glyphicon-calendar"></i> <%=new Date(item.date).toLocaleString('pt-BR',{
+                            timeZone:"America/Sao_Paulo"}).split(' ')[0]  %> </h5>
                     </div>
                     <div class="timeline-body">
                         <a href="/time-line/<%=item.id%>/<%=item.path%>" class="btn btn-primary text-white btn-lg">
                             <span class="glyphicon glyphicon-save text-white"></span> Baixar
                         </a>
                         <% if(item.download){%>
-                        <p><b>Último download: </b> <%=format(new Date(item.updatedAt),'dd/MM/yyyy')%>  </p>
+                        <p><b>Último download: </b> <%=new Date(item.updatedAt).toLocaleString('pt-BR',{
+                            timeZone:"America/Sao_Paulo"}).split(' ')[0]%>  </p>
                         <% } %>  
                     </div>
                 </div>
@@ -55,4 +57,5 @@
             
         </ul>
       </nav>
+    </div>      
     <%- include("./partials/footer.ejs") %> 

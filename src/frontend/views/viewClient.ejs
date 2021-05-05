@@ -1,3 +1,5 @@
+
+<%if(user.status == 1|| clients.id == user.client_id){ %> 
 <section class="main-client">
     <div class="border-grey date-person-client">
         <span class="badge grey label-client">Dados da Empresa</span>
@@ -67,6 +69,7 @@
         <span class="badge  grey label-client">Relatórios-Arquivos</span>
         <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
+                <% if(user.status == 1){%>
                 <h2 class="accordion-header" id="flush-headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -74,78 +77,90 @@
                                 Relatório</i></span>
                     </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                    data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                        the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        <span class="badge bg-primary"><i class='fas fa-tasks' style='font-size:18px'> Linha do
-                                Tempo</i></span>
-                    </button>
-                </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                     data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        <h3><b>Linha do Tempo</b></h3>
-                        Exibe os relatórios em uma time-line em ordem decrescente por data, possibilitando o download
-                        dos arquivos.
+                        <h3><b>Inserir Relatório</b></h3>
+                        Inseri os relatórios em Pdf na time-line do Cliente, possibilitando o download dos arquivos.
                         <div>
-                            <a class="btn btn-primary" href="/time-line?id=<%=clients.id%>&page=1"><i class='fas fa-tasks' style='font-size:24px'></i> Abrir</a>
+                            <a class="btn btn-primary" href="/reports-file/<%=clients.id%>"><i class='fas fa-file-pdf' style='font-size:24px'></i>
+                                <span class="text-white">+</span></a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <hr>
+                    <%}%> 
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <span class="badge bg-primary"><i class='fas fa-tasks' style='font-size:18px'> Linha do
+                                    Tempo</i></span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h3><b>Linha do Tempo</b></h3>
+                            Exibe os relatórios em uma time-line em ordem decrescente por data, possibilitando o
+                            download
+                            dos arquivos.
+                            <div>
+                                <a class="btn btn-primary" href="/time-line?id=<%=clients.id%>&page=1"><i
+                                        class='fas fa-tasks' style='font-size:24px'></i> Abrir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
 
+                </div>
             </div>
         </div>
-    </div>
-    <!-- fim acoreedon -->
-    <div class="border-grey date-person-client">
-        <span class="badge grey label-client">Usuário</span>
+        <!-- fim acoreedon -->
+        <div class="border-grey date-person-client">
+            <span class="badge grey label-client">Usuário</span>
 
-        <table class="table table-striped" id="table-user">
+            <table class="table table-striped" id="table-user">
 
-            <div class="btn-add-user">
-                <button class="btn btn-primary"><i class='fas fa-user-plus' style='font-size:18px'></i></button>
-            </div>
-            <% if(users.length > 0 ){%>
+                <div class="btn-add-user">
+                    <button class="btn btn-primary"><i class='fas fa-user-plus' style='font-size:18px'></i></button>
+                </div>
+                <% if(users.length > 0 ){%>
 
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Usuário</th>
-                    <th scope="col">Acesso</th>
-                    <th scope="col">Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%users.map(user =>{%>
-                <tr>
-                    <td><b><%=user.name%></b></td>
-                    <td><%=user.user_name%></td>
-                    <td><%if(user.status==1){%>
-                        <span class="badge rounded-pill bg-grey">Administrador</span>
-                        <%}else if(user.status==2){%>
-                        <span class="badge rounded-pill bg-primary">Cliente</span>
-                        <%}%> 
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Usuário</th>
+                        <th scope="col">Acesso</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%users.map(user =>{%>
+                    <tr>
+                        <td><b><%=user.name%></b></td>
+                        <td><%=user.user_name%></td>
+                        <td><%if(user.status==1){%>
+                            <span class="badge rounded-pill bg-grey">Administrador</span>
+                            <%}else if(user.status==2){%>
+                            <span class="badge rounded-pill bg-primary">Cliente</span>
+                            <%}else if(user.status==3){%>
+                            <span class="badge rounded-pill bg-warning">Funcionário</span>
+                            <%}%> 
                     </td>
                     <td></td>
                 </tr>
                 <%})%>
-            </tbody>
-            <% }else{%>
-            <div class="alert alert-primary" role="alert">
-                Não Existe usuários cadastrado para essa empresa
-            </div>
-            <% } %>
-        </table>
+                </tbody>
+                <% }else{%>
+                <div class="alert alert-primary" role="alert">
+                    Não Existe usuários cadastrado para essa empresa
+                </div>
+                <% } %>
+            </table>
 
-    </div>
+        </div>
 </section>
-<script>
-
-</script>
+<% }else{%>
+    <h1>Acesso negado!</h1>
+<%}%> 

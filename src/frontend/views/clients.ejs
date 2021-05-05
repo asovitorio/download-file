@@ -36,8 +36,8 @@
             <td><%=client.email%></td>
             <td><%=client.telephone%></td>
             <td class="action">
-                <form method="POST" action="/client-view" class="form-view-client">
-                    <input type="hidden" class="id-delete-client" name="id" value="<%=client.id%>">
+                <form method="GET" action="/client-view/<%=client.id%>" class="form-view-client">
+                   
                     <button type="submit" class="btn btn-secondary btn-lg btn-view-client" data-toggle="modal"
                         data-target="#delete-client">
                         <span class="glyphicon glyphicon-eye-open" style="color: #fff;"></span>
