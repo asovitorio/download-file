@@ -1,6 +1,8 @@
 <div class="card text-center">
     <div class="card-header">
+       
         <ul class="nav nav-tabs card-header-tabs">
+            <%if(user.status==1){%>
             <li class="nav-item">
                 <a class="nav-link <%=clientActive%> " aria-current="true" href="/home"><i class='fas fa-users'>
                         Clientes</i> </a>
@@ -12,5 +14,14 @@
                 <a class="nav-link <%=configActive%> " href="#" tabindex="-1" aria-disabled="true"><i
                         class='fas fa-cogs'> Configuração</i> </a>
             </li>
+          <%}else{%>
+            <li class="nav-item">
+                <a class="nav-link"  aria-current="true"  ><i class='fas fa-users'>
+                        Clientes</i> </a>
+            </li>
+            <% }  %> 
+              
+                
+             
         </ul>
     </div>

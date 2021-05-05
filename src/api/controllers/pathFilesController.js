@@ -125,7 +125,7 @@ const pathFilesController = {
     },
     create: async (req, res) => {
 
-        // return res.send(req.files)
+       
         try {
             const {
                 date,

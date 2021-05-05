@@ -28,7 +28,7 @@ router.post('/clients',adminController.saveClient)
 router.put('/clients/:id',adminController.updateClient)
 router.delete('/clients',adminController.deleteClient)
 router.put('/clients',adminController.updateSaveClient)
-router.post('/client-view',adminController.viewClient)
+router.get('/client-view/:id',adminController.viewClient)
 router.get('/reports-file/:client_id',adminController.reportsFile)
 router.post('/reports-file',upload.any(),adminController.reportsFileSave)
 

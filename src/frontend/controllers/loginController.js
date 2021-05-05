@@ -10,8 +10,6 @@ const loginController = {
         })
     },
     auth: async (req, res) => {
-        
-        
         try {
             const data = await fetch(`${process.env.URL_BASE}/auth`, {
                 method: 'post',
@@ -20,15 +18,11 @@ const loginController = {
             })
             const token = await data.json()
             req.session.token = token
-            
             const user = await jwt.verify(req.session.token,passJwt)
             
-            
             if(user.status==1)  return res.redirect(`/home`)
-            if(user.status==2)  return res.redirect(`/time-line?id=${user.id}&page=1`)
-
-
-         
+            if(user.status==2)  return res.redirect(`/client-view/${user.client_id}`)
+            if(user.status==3)  return res.redirect(`/time-line?id=${user.client_id}&page=1`)
             
         } catch (error) {
             req.session.erro = true
