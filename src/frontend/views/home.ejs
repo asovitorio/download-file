@@ -3,17 +3,23 @@
 <main class="container">
  
   <%- include("./partials/menu.ejs") %>
-  <% if(teste == 'index'){%>
+  
+  <% if(view == 'index'){%>
   <%- include('./clients.ejs') %>
-  <% }else if(teste == 'create'){%>
+  <% }else if(view == 'createClient'){%>
   <%- include('./addClient.ejs') %>
-  <%}else if(teste == 'view'){%>
+  <%}else if(view == 'viewClient'){%>
   <%- include('./viewClient.ejs') %>
-  <%}else if(teste == 'file'){%>
+  <%}else if(view == 'file'){%>
   <%- include('./addFileReports.ejs') %>
+  <%}else if(view == 'createUser'){%>
+  <%- include('./addUser.ejs') %>
   <% } %>
   </div>
 </main>
 
 <%- include("./partials/pagination.ejs") %>
+<script>
+  console.log('<%= view %>')
+</script>
 <%- include("./partials/footer.ejs") %>

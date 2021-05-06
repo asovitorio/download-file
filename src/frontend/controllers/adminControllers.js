@@ -85,7 +85,7 @@ const adminController = {
             reportActive:"",
             configActive:"",
             linkPage:"/home",
-            teste:'index',
+            view:'index',
             user,
             format
         })
@@ -100,7 +100,7 @@ const adminController = {
             reportActive:"",
             configActive:"",
             linkPage:"/home",
-            teste:'create',
+            view:'create',
             user,
             update:false,
             clients:{},
@@ -132,8 +132,6 @@ const adminController = {
                 
             }
             
-      
-       
     },
     updateClient:async(req,res) =>{
         try {
@@ -151,7 +149,7 @@ const adminController = {
             reportActive:"",
             configActive:"",
             linkPage:"/home",
-            teste:'create',
+            view:'create',
             user,
             update:true,
             clients:data,
@@ -223,7 +221,7 @@ const adminController = {
             reportActive:"",
             configActive:"",
             linkPage:"/home",
-            teste:'view',
+            view:'viewClient',
             user,
             users,
             update:true,
@@ -251,7 +249,7 @@ const adminController = {
             reportActive:"",
             configActive:"",
             linkPage:"/home",
-            teste:'file',
+            view:'file',
             user,
             client_id,
             reports,

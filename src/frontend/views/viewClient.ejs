@@ -129,6 +129,7 @@
 
                 <thead>
                     <tr>
+                        <th scope="col">id</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Usuário</th>
                         <th scope="col">Acesso</th>
@@ -138,6 +139,7 @@
                 <tbody>
                     <%users.map(user =>{%>
                     <tr>
+                        <td><b><%=user.id%></b></td>
                         <td><b><%=user.name%></b></td>
                         <td><%=user.user_name%></td>
                         <td><%if(user.status==1){%>
