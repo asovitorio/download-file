@@ -6,7 +6,8 @@ const loginController = {
     index: (req, res) => {
         res.render("index", {
             title: "Login",
-            erro: false
+            erro: false,
+            msg:''
         })
     },
     auth: async (req, res) => {
@@ -19,16 +20,24 @@ const loginController = {
             const token = await data.json()
             req.session.token = token
             const user = await jwt.verify(req.session.token,passJwt)
-            
-            if(user.status==1)  return res.redirect(`/home`)
-            if(user.status==2)  return res.redirect(`/client-view/${user.client_id}`)
-            if(user.status==3)  return res.redirect(`/time-line?id=${user.client_id}&page=1`)
+           
+            if(user.active){
+                if(user.status==1)  return res.redirect(`/home`)
+                if(user.status==2)  return res.redirect(`/client-view/${user.client_id}`)
+                if(user.status==3)  return res.redirect(`/time-line?id=${user.client_id}&page=1`)
+            }
+            return  res.render("index", {
+                title: "Login",
+                erro:true,
+                msg:"Usuário desativado Contate o administrador do Sistema "
+            })
             
         } catch (error) {
             req.session.erro = true
             return  res.render("index", {
                 title: "Login",
-                erro: true
+                erro: true,
+                msg:"Usuário ou Senha Invalido! "
             })
         }
 

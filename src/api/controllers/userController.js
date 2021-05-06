@@ -124,6 +124,8 @@ const userController = {
                 password,
                 status,
                 client_id,
+                active,
+                email
                
             } = req.body
             const resp = await User.findByPk(id)
@@ -133,6 +135,8 @@ const userController = {
             password:password===''?'':bcryptjs.hashSync(password,10),
             status:status===''?resp.status:status,
             client_id:client_id===''?resp.client_id:client_id,
+            active:active===''?resp.active:active,
+            email:email===''?resp.email:email,
            }
             const update = await User.update(userUpdate,
              {

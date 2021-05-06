@@ -26,6 +26,8 @@ const authJwtController = {
                 client_id:user.client_id,
                 status:user.status,
                 company:user.client.company,
+                email:user.email,
+                active:user.active
             } 
             const token = jwt.sign(userJwt,process.env.PASS_JWT,{expiresIn:"10h"}) 
             return res.status(200).json(token)

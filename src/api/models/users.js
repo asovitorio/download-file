@@ -6,10 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     user_name: DataTypes.STRING,
     password: DataTypes.STRING,
     status: DataTypes.STRING,
-    client_id: DataTypes.INTEGER
+    client_id: DataTypes.INTEGER,
+    active:DataTypes.BOOLEAN,
+    email: DataTypes.STRING,
+
   }, {
     timestamps: true,
-      underscored: true,
+    underscored: true,
       tableName: 'users'
   });
 
